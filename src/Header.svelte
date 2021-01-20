@@ -12,4 +12,4 @@
     }
 </style>
 
-<header class="header"><span>Where is my 50.000€ scanner?</span></header>
+<header class="header"><span>🕵️ Detective Scanner.</span></header>
