@@ -6,7 +6,7 @@
 
 	const fetchItems = (async () => {
 		const response = await fetch(
-			"https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E15?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
+			"https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E1000?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
 		);
 		const data = await response.json();
 		return await data.values.slice(1);
