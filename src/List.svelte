@@ -5,14 +5,20 @@
 </script>
 
 <style>
-    ul {
+    .items {
         box-sizing: border-box;
+        height: calc(100vh - 40px);
+    }
+    ul {
         list-style: none;
         width: 100%;
         padding: 0;
         margin: 0;
+        max-height: 400px;
+        overflow: auto;
     }
     li {
+        box-sizing: border-box;
         margin: 0;
         padding: 16px 8px;
         display: flex;
@@ -33,6 +39,7 @@
         width: 100%;
     }
     .search-wrapper {
+        box-sizing: border-box;
         padding: 16px;
         border-bottom: 1px solid rgb(212, 212, 212);
     }
@@ -61,9 +68,9 @@
         {#each filtredItems as item}
             <li data-id={item[0]}>
                 <span>🤖 {item[0]}</span>
-                <span>📆
-                    {item[1].split('/').join('.').split(' ')[0]}</span><span>🌎
-                    LON:{item[3].split('.')[0]}, LAT:{item[4].split('.')[0]}</span>
+                <span>📆 {item[1].split('/').join('.').split(' ')[0]}</span>
+                <span style="padding-right: 16px;">🌎 LON:{item[3].split('.')[0]},
+                    LAT:{item[4].split('.')[0]}</span>
             </li>
         {/each}
     </ul>

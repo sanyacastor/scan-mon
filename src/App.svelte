@@ -6,7 +6,7 @@
 
 	const fetchItems = (async () => {
 		const response = await fetch(
-			"https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E5?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
+			"https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E15?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
 		);
 		const data = await response.json();
 		return await data.values.slice(1);
@@ -24,9 +24,10 @@
 	.container {
 		display: grid;
 		width: 100%;
-		height: 100vh;
+		max-height: 100vh;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 40px 1fr;
+		/* overflow: hidden; */
 	}
 
 	.loader {
