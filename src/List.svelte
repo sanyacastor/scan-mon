@@ -57,7 +57,7 @@
             class="search"
             placeholder="search"
             on:input={(e) => (filtredItems = items.filter((i) =>
-                    i[0]
+                    i[2]
                         .toLowerCase()
                         .includes(e.target.value.trim().toLowerCase())
                 ))}
@@ -66,11 +66,10 @@
     <h2>Tracking</h2>
     <ul>
         {#each filtredItems as item}
-            <li data-id={item[0]}>
-                <span>🤖 {item[0]}</span>
-                <span>📆 {item[1].split('/').join('.').split(' ')[0]}</span>
-                <span style="padding-right: 16px;">🌎 LON:{item[3].split('.')[0]},
-                    LAT:{item[4].split('.')[0]}</span>
+            <li data-id={item[2]}>
+                <span>🤖 {item[2]}</span>
+                <span style="padding-right: 8px">📆
+                    {item[1].split('/').join('.').split(' ')[0]}</span>
             </li>
         {/each}
     </ul>

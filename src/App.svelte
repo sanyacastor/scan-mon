@@ -59,7 +59,7 @@
 			<List class="list" items={data} />
 			<Map lat={data[0][3]} lon={data[0][4]} zoom={15}>
 				{#each data as item}
-					<MapMarker lat={item[3]} lon={item[4]} label={item[0]} />
+					<MapMarker lat={item[3]} lon={item[4]} label={item[2]} />
 				{/each}
 			</Map>
 		{:catch error}
