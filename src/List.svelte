@@ -21,16 +21,16 @@
   <ul>
     {#each filtredItems as item, i}
       <li data-id={item[2]}>
-        <span>{i}.🤖 {item[2]}</span>
-        <span style="padding-right: 8px"
-          >📆
+        <span>{i + 1}.{item[2]}</span>
+        <span style="padding-right: 8px">
           {new Date(
             `${item[1].split(" ")[0].split("/")[2]}-${
               item[1].split(" ")[0].split("/")[1]
-            }-${item[1].split(" ")[0].split("/")[0]}T${
-              item[1].split(" ")[1]
-            }:00`
-          ).toLocaleString()}</span
+            }-${item[1].split(" ")[0].split("/")[0]}T${item[1].split(" ")[1]}`
+          )
+            .toLocaleString()
+            .slice(0, -3)
+            .replace(",", " |")}</span
         >
       </li>
     {/each}
@@ -43,6 +43,7 @@
     height: calc(100vh - 40px);
     display: grid;
     grid-template-rows: auto auto 1fr;
+    grid-column: 0/1;
   }
   ul {
     list-style: none;
@@ -71,8 +72,16 @@
   }
   .search {
     width: 100%;
+    padding-left: 36px;
+  }
+  .search-wrapper:before {
+    content: "🔎";
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 8px;
   }
   .search-wrapper {
+    position: relative;
     box-sizing: border-box;
     padding: 16px;
     border-bottom: 1px solid rgb(212, 212, 212);

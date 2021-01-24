@@ -30,6 +30,7 @@
       }
       uniqItems.push(last);
     });
+
     return uniqItems;
   })();
 </script>
@@ -40,14 +41,14 @@
       <div class="loader"><span>loading...</span></div>
     {:then data}
       <Header />
-      <List class="list" items={data} />
+      <List items={data} />
       <Map lat={40.4165} lon={-3.70256} zoom={5}>
         {#each data as item}
           <MapMarker lat={item[3]} lon={item[4]} label={item[2]} />
         {/each}
       </Map>
     {:catch error}
-      <p>An error occurred!</p>
+      <p>Error occurred!</p>
     {/await}
   </section>
 </main>
@@ -66,7 +67,6 @@
     max-height: 100vh;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 40px 1fr;
-    /* overflow: hidden; */
   }
 
   .loader {
@@ -77,14 +77,16 @@
     align-items: center;
   }
 
-  /* .list {
-		grid-column-start: 0;
-		grid-column-end: 1;
-	} */
-
   @media (min-width: 640px) {
     main {
       max-width: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 40px 1fr 1fr;
     }
   }
 </style>

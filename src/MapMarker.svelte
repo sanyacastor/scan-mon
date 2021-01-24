@@ -15,7 +15,7 @@
     .addEventListener("click", () => {
       map.flyTo({
         center: [lon, lat],
-        essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+        essential: true,
       });
     });
   const marker = new mapbox.Marker()
