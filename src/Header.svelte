@@ -1,4 +1,4 @@
-<header class="header"><span>🕵️ Detective Scanners.</span></header>
+<header class="header"><span>Latest locations.</span></header>
 
 <style>
   .header {
