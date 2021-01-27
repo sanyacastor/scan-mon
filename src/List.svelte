@@ -28,7 +28,7 @@
               item[1].split(" ")[0].split("/")[1]
             }-${item[1].split(" ")[0].split("/")[0]}T${item[1].split(" ")[1]}`
           )
-            .toLocaleString()
+            .toLocaleString('ru-ru')
             .slice(0, -3)
             .replace(",", " |")}</span
         >
