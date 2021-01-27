@@ -1,4 +1,4 @@
-<header class="header"><span>Latest locations.</span></header>
+<header class="header"><span>Latest locations 📍</span></header>
 
 <style>
   .header {
