@@ -26,11 +26,6 @@
         <span>{i + 1}.{item[2]}</span>
         <span style="padding-right: 8px">
           {dayjs(item[1]).format("DD-MM-YYYY | HH:MM")}
-          <!-- {new Date(
-            `${item[1].split(" ")[0].split("/")[2]}-${
-              item[1].split(" ")[0].split("/")[1]
-            }-${item[1].split(" ")[0].split("/")[0]}T${item[1].split(" ")[1]}` -->
-          <!-- ) .toLocaleDateString("ru-ru") .slice(0, -3) .replace(",", " |")} -->
         </span>
       </li>
     {/each}
