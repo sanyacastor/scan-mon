@@ -1,29 +1,35 @@
 <script>
+  // @ts-check
+  import dayjs from "dayjs";
+  import customParseFormat from "dayjs/plugin/customParseFormat";
+
   import Map from "./Map.svelte";
   import List from "./List.svelte";
   import Header from "./Header.svelte";
   import MapMarker from "./MapMarker.svelte";
+
+  dayjs.extend(customParseFormat);
 
   const fetchItems = (async () => {
     const response = await fetch(
       "https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E1000?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
     );
     const data = await response.json();
-
     let uniqItems = [];
     let uniqIds = new Set();
     let items = data.values.slice(1);
     items.forEach((item) => uniqIds.add(item[2]));
 
-    const getDate = (str) =>
-      `${str.split(" ")[0].split("/")[2]}-${str.split(" ")[0].split("/")[1]}-
-     ${str.split(" ")[0].split("/")[0]}T${str.split(" ")[1]}:00`;
+    const getDate = (str) => dayjs(str);
+    //   `${str.split(" ")[0].split("/")[2]}-${str.split(" ")[0].split("/")[1]}-
+    //  ${str.split(" ")[0].split("/")[0]}T${str.split(" ")[1]}:00`;
 
     uniqIds.forEach((u) => {
       const sameId = items.filter((item) => item[2] == u);
       let last = sameId[0];
       for (let i = 0; i < sameId.length; i++) {
         const current = sameId[i];
+        console.log("@@", getDate(current[1]));
         if (getDate(current[1]) > getDate(last[1])) {
           last = current;
         }
