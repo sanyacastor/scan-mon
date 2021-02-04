@@ -21,15 +21,12 @@
     items.forEach((item) => uniqIds.add(item[2]));
 
     const getDate = (str) => dayjs(str);
-    //   `${str.split(" ")[0].split("/")[2]}-${str.split(" ")[0].split("/")[1]}-
-    //  ${str.split(" ")[0].split("/")[0]}T${str.split(" ")[1]}:00`;
 
     uniqIds.forEach((u) => {
       const sameId = items.filter((item) => item[2] == u);
       let last = sameId[0];
       for (let i = 0; i < sameId.length; i++) {
         const current = sameId[i];
-        console.log("@@", getDate(current[1]));
         if (getDate(current[1]) > getDate(last[1])) {
           last = current;
         }

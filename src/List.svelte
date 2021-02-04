@@ -87,4 +87,10 @@
     text-transform: uppercase;
     text-align: center;
   }
+  @media (max-width: 900px) {
+    .items {
+      height: auto;
+      max-height: 60vh;
+    }
+  }
 </style>

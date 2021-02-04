@@ -12,4 +12,10 @@
     align-items: center;
     justify-content: center;
   }
+  @media (max-width: 900px) {
+    .header {
+      grid-column-start: 1;
+      grid-column-end: 1;
+    }
+  }
 </style>
