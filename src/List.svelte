@@ -1,32 +1,13 @@
-<script>
-  import dayjs from "dayjs";
-
-  export let items;
-  export let search = "";
-  export let filtredItems = items;
+<script type="ts">
+  export let items: string;
 </script>
 
 <div class="items">
-  <label class="search-wrapper">
-    <input
-      type="text"
-      class="search"
-      placeholder="search"
-      on:input={(e) =>
-        (filtredItems = items.filter((i) =>
-          i[2].toLowerCase().includes(e.target.value.trim().toLowerCase())
-        ))}
-      bind:value={search}
-    />
-  </label>
-  <h2>Tracking list</h2>
+  <h2>Важные точки</h2>
   <ul>
-    {#each filtredItems as item, i}
-      <li data-id={item[2]}>
-        <span>{i + 1}.{item[2]}</span>
-        <span style="padding-right: 8px">
-          {dayjs(item[1]).format("DD-MM-YYYY | HH:MM")}
-        </span>
+    {#each items as item, i}
+      <li data-id>
+        <span>{i + 1}.{item.title}</span>
       </li>
     {/each}
   </ul>
@@ -64,22 +45,6 @@
   li:hover {
     background: rgb(98, 30, 153);
     color: #fff;
-  }
-  .search {
-    width: 100%;
-    padding-left: 36px;
-  }
-  .search-wrapper:before {
-    content: "🔎";
-    position: absolute;
-    padding-top: 8px;
-    padding-left: 8px;
-  }
-  .search-wrapper {
-    position: relative;
-    box-sizing: border-box;
-    padding: 16px;
-    border-bottom: 1px solid rgb(212, 212, 212);
   }
   h2 {
     padding-left: 8px;

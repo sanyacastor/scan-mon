@@ -3,7 +3,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  
 }
 
 body {
@@ -11,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'PT Mono', monospace;
+  font-family: "PT Mono", monospace;
 }
 
 a {
@@ -65,4 +64,12 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
+}
+.marker {
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  background: blue;
 }

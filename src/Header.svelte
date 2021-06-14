@@ -1,12 +1,11 @@
-<header class="header"><span>Latest locations 📍</span></header>
+<header class="header"><b> 🐺 Глухомань - Урочище 🐺 </b></header>
 
 <style>
   .header {
     width: 100%;
     grid-column-start: 1;
     grid-column-end: 3;
-    background: rgb(98, 30, 153);
-    border-bottom: 1px solid black;
+    background: linear-gradient(307deg, rgb(53, 195, 237) 20%, rgb(148, 120, 180) 79%);
     color: #fff;
     display: flex;
     align-items: center;

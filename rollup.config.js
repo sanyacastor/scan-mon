@@ -4,6 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import sveltePreprocess from 'svelte-preprocess';
+import typescript from '@rollup/plugin-typescript';
 import { config } from 'dotenv';
 import css from 'rollup-plugin-css-only';
 
@@ -32,7 +34,7 @@ function serve() {
 }
 
 export default {
-	input: 'src/main.js',
+	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
 		format: 'iife',
@@ -41,6 +43,7 @@ export default {
 	},
 	plugins: [
 		svelte({
+			preprocess: sveltePreprocess(),
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
@@ -60,6 +63,10 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production
+		}),
 		replace({
 			// stringify the object       
 			__myapp: JSON.stringify({
