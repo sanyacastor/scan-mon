@@ -1,12 +1,12 @@
 <script type="ts">
-  export let items: string;
+  export let items: Ipoint[];
 </script>
 
 <div class="items">
   <h2>Важные точки</h2>
   <ul>
     {#each items as item, i}
-      <li data-id>
+      <li data-id={item.id}>
         <span>{i + 1}.{item.title}</span>
       </li>
     {/each}

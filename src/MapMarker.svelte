@@ -9,10 +9,11 @@
   export let lon;
   export let label;
   export let icon;
+  export let id;
 
   const popup = new mapbox.Popup({ offset: 25 }).setText(label);
   const el = document.createElement("div");
-  
+
   el.className = "textMarker";
   el.style.display = "block";
   el.style.width = "50px";
@@ -20,6 +21,13 @@
   el.style.background = `url(icons/${icon})`;
   el.style.backgroundSize = "50px";
   el.style.backgroundRepeat = "no-repeat";
+
+  document.querySelector(`[data-id='${id}'`).addEventListener("click", () => {
+    map.flyTo({
+      center: [lon, lat],
+      essential: true,
+    });
+  });
 
   const marker = new mapbox.Marker(el)
     .setLngLat([lon, lat])
@@ -29,7 +37,7 @@
 
 <style>
   .textMarker:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 40px;
     height: 40px;

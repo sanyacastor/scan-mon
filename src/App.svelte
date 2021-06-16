@@ -11,12 +11,13 @@
     <Header />
     <List items={points} />
     <Map lat={56.26} lon={84.97} zoom={10}>
-      {#each points as item}
+      {#each points as point}
         <MapMarker
-          lat={item.lat}
-          lon={item.lon}
-          label={item.title}
-          icon={item.icon}
+          lat={point.lat}
+          lon={point.lon}
+          label={point.title}
+          icon={point.icon}
+          id={point.id}
         />
       {/each}
     </Map>

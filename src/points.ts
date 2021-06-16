@@ -1,17 +1,19 @@
 export const points: Ipoint[] = [
   {
-    title: "Колона в селе Батурино",
+    title: "Колонка в селе Батурино",
     lat: 56.264793,
     lon: 84.974302,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "eWisU3Ogqb",
   },
   {
-    title: "Родник водопад Звездный ключ",
+    title: "Родник водопад 'Звездный ключ'",
     lat: 56.234279,
     lon: 84.981099,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "LL43bF7Z09",
   },
   {
     title: "Ручей Тарганак",
@@ -19,6 +21,7 @@ export const points: Ipoint[] = [
     lon: 85.046181,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "t9JYWMPnDm",
   },
   {
     title: "Колонка в селе Овражное",
@@ -26,6 +29,7 @@ export const points: Ipoint[] = [
     lon: 85.152671,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "q60AaguDFJ",
   },
   {
     title: "Река Тугояквока в урочище Конево",
@@ -33,6 +37,7 @@ export const points: Ipoint[] = [
     lon: 85.140652,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "8olxSLtibj",
   },
   {
     title: "Колонка в селе Косогорово",
@@ -40,6 +45,7 @@ export const points: Ipoint[] = [
     lon: 85.091535,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "B04KIKbZuh",
   },
   {
     title: "Ручей Шумиха",
@@ -47,6 +53,7 @@ export const points: Ipoint[] = [
     lon: 84.991726,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "eLnJrhJhUT",
   },
   {
     title: "Горный ключ",
@@ -54,6 +61,7 @@ export const points: Ipoint[] = [
     lon: 84.973122,
     type: "Места пополнения воды",
     icon: "water.png",
+    id: "BRm-6M5Lpc",
   },
   {
     title: "Смотровая площадка на чертовом пальце",
@@ -61,6 +69,7 @@ export const points: Ipoint[] = [
     lon: 84.964531,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "BwiV-rYiA_",
   },
   {
     title: "Архиологическая площадка 'Городище Шеломок' ",
@@ -68,6 +77,7 @@ export const points: Ipoint[] = [
     lon: 84.959882,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "8EGcIhyXA1",
   },
   {
     title: "Действующее капище",
@@ -75,6 +85,7 @@ export const points: Ipoint[] = [
     lon: 84.951591,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "Gu0lACquu8",
   },
   {
     title: "Смотровая площадка в сторону села Коларово",
@@ -82,6 +93,7 @@ export const points: Ipoint[] = [
     lon: 84.970742,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "OBtOZNCI_B",
   },
   {
     title: "Кладбище",
@@ -89,6 +101,7 @@ export const points: Ipoint[] = [
     lon: 85.026658,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "SE5ommT_bE",
   },
   {
     title: "Смотровая площадка с видом на Томь",
@@ -96,6 +109,7 @@ export const points: Ipoint[] = [
     lon: 85.015169,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "c2S_kPrt2R",
   },
   {
     title: "Смотровая площадка с видом на Томь и остепненный холм",
@@ -103,6 +117,7 @@ export const points: Ipoint[] = [
     lon: 85.015449,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "g5PMUHFiaW",
   },
   {
     title: "Бобровая плотина",
@@ -110,6 +125,7 @@ export const points: Ipoint[] = [
     lon: 84.979722,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "ViDZd8FMoX",
   },
   {
     title: "Старая сосна посреди пруда",
@@ -117,6 +133,7 @@ export const points: Ipoint[] = [
     lon: 85.058822,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "2cLVH1poiK",
   },
   {
     title: "Землянка над ручьем",
@@ -124,6 +141,7 @@ export const points: Ipoint[] = [
     lon: 85.044718,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "yXv6hzJSkm",
   },
   {
     title: "Кордон Ларинского заказника",
@@ -131,6 +149,7 @@ export const points: Ipoint[] = [
     lon: 85.03847,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "RoauTxnC4u",
   },
   {
     title: "Смотровая площадка",
@@ -138,6 +157,7 @@ export const points: Ipoint[] = [
     lon: 85.034496,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "X2YGoa1Tto",
   },
   {
     title: "Красивый вид на пруд",
@@ -145,6 +165,7 @@ export const points: Ipoint[] = [
     lon: 85.156042,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "0UT3AkaTxg",
   },
   {
     title: "Дом отшельницы",
@@ -152,6 +173,7 @@ export const points: Ipoint[] = [
     lon: 85.14366,
     type: "Достопремечательности и красивые виды",
     icon: "eye.png",
+    id: "K8CsM78FgS",
   },
 
   {
@@ -160,6 +182,7 @@ export const points: Ipoint[] = [
     lon: 84.970805,
     type: "Геологические объекты",
     icon: "stone.png",
+    id: "CeAkAhHkX7",
   },
   {
     title: "Скала и место отдыха над рекой Тугояковка.",
@@ -167,6 +190,7 @@ export const points: Ipoint[] = [
     lon: 85.053081,
     type: "Геологические объекты",
     icon: "stone.png",
+    id: "NZ1UmZYG6i",
   },
   {
     title: "Холмы",
@@ -174,13 +198,15 @@ export const points: Ipoint[] = [
     lon: 84.992831,
     type: "Геологические объекты",
     icon: "stone.png",
+    id: "BsE_b2baMb",
   },
   {
-    title: "Гиганский овраг",
+    title: "Гигантский овраг",
     lat: 56.135082,
     lon: 84.98297,
     type: "Геологические объекты",
     icon: "stone.png",
+    id: "ZGWkA-uyy0",
   },
   {
     title: "Аникин камень",
@@ -188,6 +214,7 @@ export const points: Ipoint[] = [
     lon: 84.98251,
     type: "Геологические объекты",
     icon: "stone.png",
+    id: "wcvhchu-fB",
   },
   {
     title: "Старт",
@@ -195,6 +222,7 @@ export const points: Ipoint[] = [
     lon: 84.976104,
     type: "Старт",
     icon: "start.png",
+    id: "P8uS76FmYC",
   },
   {
     title: "Финиш",
@@ -202,7 +230,8 @@ export const points: Ipoint[] = [
     lon: 84.976842,
     type: "Финишь",
     icon: "start.png",
-  },
+    id: "b9MirxTq-M",
+  }
   // { title: "MTC", type: "MTC", lat: 56.244184, lon: 85.013865 },
   // { title: "MTC", type: "MTC", lat: 56.242689, lon: 85.059612 },
   // { title: "MTC", type: "MTC", lat: 56.235915, lon: 84.968138 },

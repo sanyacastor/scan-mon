@@ -12,7 +12,7 @@
 
   let container;
   let map;
-  let mapStyle = "mapbox://styles/mapbox/satellite-v9";
+  let mapStyle = "mapbox://styles/mapbox/streets-v9";
 
   onMount(() => {
     const link = document.createElement("link");
