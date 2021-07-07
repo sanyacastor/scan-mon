@@ -12,7 +12,7 @@
 
   let container;
   let map;
-  let mapStyle = "mapbox://styles/mapbox/streets-v9";
+  let mapStyle = "mapbox://styles/sanya3000/ckqtntxka54aj18mk5c18k7yg";
 
   onMount(() => {
     const link = document.createElement("link");
@@ -21,10 +21,11 @@
     link.onload = () => {
       map = new mapbox.Map({
         container,
-        style: "mapbox://styles/mapbox/streets-v9",
         center: [lon, lat],
         zoom,
       });
+
+      map.setStyle(mapStyle);
 
       map.addControl(
         new mapbox.GeolocateControl({
@@ -43,9 +44,9 @@
 
     function switchLayer() {
       mapStyle =
-        mapStyle === "mapbox://styles/mapbox/satellite-v9"
-          ? "mapbox://styles/mapbox/streets-v9"
-          : "mapbox://styles/mapbox/satellite-v9";
+        mapStyle === "mapbox://styles/sanya3000/ckqtntxka54aj18mk5c18k7yg"
+          ? "mapbox://styles/sanya3000/ckqrm3ku416yl18nzjrjdkczd"
+          : "mapbox://styles/sanya3000/ckqtntxka54aj18mk5c18k7yg";
       map.setStyle(mapStyle);
     }
 
@@ -69,7 +70,9 @@
     z-index: 99;
     /* width: 40px; */
     height: 40px;
-    border-radius: 50%;
+    border-radius: 14px;
+    padding: 10px 20px;
+    font-weight: 600;
     top: 16px;
     left: 16px;
     background: rgb(53, 195, 237);
