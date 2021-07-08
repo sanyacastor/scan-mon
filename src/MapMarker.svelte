@@ -16,11 +16,14 @@
 
   el.className = "textMarker";
   el.style.display = "block";
-  el.style.width = "50px";
-  el.style.height = "50px";
+  el.style.width = "40px";
+  el.style.height = "40px";
   el.style.background = `url(icons/${icon})`;
-  el.style.backgroundSize = "50px";
+  el.style.backgroundSize = "30px";
+  el.style.backgroundPosition = "center";
   el.style.backgroundRepeat = "no-repeat";
+  el.style.backgroundColor = "white";
+  el.style.borderRadius = "50%";
 
   document.querySelector(`[data-id='${id}'`).addEventListener("click", () => {
     map.flyTo({
@@ -34,13 +37,3 @@
     .setPopup(popup)
     .addTo(map);
 </script>
-
-<style>
-  .textMarker:after {
-    content: "";
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: blue;
-  }
-</style>

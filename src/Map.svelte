@@ -59,6 +59,13 @@
 
 <div bind:this={container}>
   <button id="switch-style-button">Спутник</button>
+  <div class="legend">
+    <span class="legend-item"
+      ><span class="line-color line-color-s" />малый круг</span>
+    <span class="legend-item"
+      ><span class="line-color line-color-l" />большой круг</span
+    >
+  </div>
   {#if map}
     <slot />
   {/if}
@@ -73,11 +80,41 @@
     border-radius: 14px;
     padding: 10px 20px;
     font-weight: 600;
-    top: 16px;
-    left: 16px;
-    background: rgb(53, 195, 237);
+    top: 10px;
+    left: 10px;
+    background: rgb(141, 64, 177);
+    color: #fff;
     border: none;
     text-transform: uppercase;
+  }
+  .legend {
+    position: absolute;
+    z-index: 99;
+    top: 60px;
+    left: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  .legend-item + .legend-item {
+    margin-top: 8px;
+  }
+  .line-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+  .line-color-s {
+    background: rgb(53, 195, 237);
+  }
+  .line-color-l {
+    background: rgb(148, 120, 180);
   }
   div {
     max-width: 100%;
