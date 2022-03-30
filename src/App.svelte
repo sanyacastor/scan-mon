@@ -1,39 +1,29 @@
 <script>
-  // import dayjs from "dayjs";
-  // import customParseFormat from "dayjs/plugin/customParseFormat";
   import faunadb, { query as q } from "faunadb"
-
 
   import Map from "./Map.svelte";
   import List from "./List.svelte";
   import Header from "./Header.svelte";
   import MapMarker from "./MapMarker.svelte";
 
-  // dayjs.extend(customParseFormat);
-
-
- 
-
   const fetchItems = (async () => {
-  
-  const adminClient = new faunadb.Client({ secret: "fnAEi6W0IhAAxfA1ITBNWi4FrDTt-lQhUm2fTEb4", domain: "db.eu.fauna.com"});
+    const adminClient = new faunadb.Client({ secret: process.env.FAUNADB_SECRET, domain: "db.eu.fauna.com"});
 
-  return adminClient.query(
-    q.Get(q.Ref(q.Collection('scanners'), '327479628938608836'))
-  )
-  .then((res) => {
-    const pointsArr = []
-    Object.keys(res.data.points).map(p=>pointsArr.push({...res.data.points[p], id: p}))
-    console.log("$$$", pointsArr)
-    return pointsArr 
-  })
-  .catch((err) => console.error(
-    'Error: [%s] %s: %s',
-    err.name,
-    err.message,
-    err.errors()[0].description,
-  ));
-  
+    return adminClient.query(
+      q.Get(q.Ref(q.Collection('scanners'), '327479628938608836'))
+    )
+    .then((res) => {
+      const pointsArr = []
+      Object.keys(res.data.points).map(p=>pointsArr.push({...res.data.points[p], id: p}))
+      return pointsArr 
+    })
+    .catch((err) => console.error(
+      'Error: [%s] %s: %s',
+      err.name,
+      err.message,
+      err.errors()[0].description,
+    ));
+
   })();
 </script>
 
