@@ -7,25 +7,29 @@ exports.handler = async function (event, context) {
     domain: "db.eu.fauna.com",
   });
 
+  if (!event.body) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Request body is empty" }),
+    };
+  }
+
   serverClient
     .query(
       q.Update(q.Ref(q.Collection("scanners"), "327479628938608836"), {
         data: { points: JSON.parse(event.body) },
       })
     )
-    .then((ret) => console.log(ret))
+    .then(() => {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Scanners positions updated" }),
+      };
+    })
     .catch((err) => {
-      console.error(
-        "Error: [%s] %s: %s",
-        err.name,
-        err.message,
-        err.errors()[0].description
-      );
-      console.log(">RR", err);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ message: err.message }),
+      };
     });
-
-  // return {
-  //   statusCode: 200,
-  //   body: JSON.stringify({ message: "Hello World" }),
-  // };
 };
