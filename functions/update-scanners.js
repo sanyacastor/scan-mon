@@ -14,7 +14,7 @@ exports.handler = async function (event, context) {
     };
   }
 
-  serverClient
+  return serverClient
     .query(
       q.Update(q.Ref(q.Collection("scanners"), "327479628938608836"), {
         data: { points: JSON.parse(event.body) },
