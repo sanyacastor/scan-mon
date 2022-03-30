@@ -8,10 +8,11 @@
   export let lat;
   export let lon;
   export let label;
+  export let id;
 
   const popup = new mapbox.Popup({ offset: 25 }).setText(label);
   document
-    .querySelector(`[data-id='${label}'`)
+    .querySelector(`[data-id='${id}'`)
     .addEventListener("click", () => {
       map.flyTo({
         center: [lon, lat],

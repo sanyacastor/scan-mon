@@ -13,8 +13,8 @@
       class="search"
       placeholder="search"
       on:input={(e) =>
-        (filtredItems = items.filter((i) =>
-          i[2].toLowerCase().includes(e.target.value.trim().toLowerCase())
+        (filtredItems = items.filter((point) =>
+          point.id.toLowerCase().includes(e.target.value.trim().toLowerCase())
         ))}
       bind:value={search}
     />
@@ -22,10 +22,10 @@
   <h2>Tracking list</h2>
   <ul>
     {#each filtredItems as item, i}
-      <li data-id={item[2]}>
-        <span>{i + 1}.{item[2]}</span>
+      <li data-id={item.id}>
+        <span>{i + 1}.{item.machine}</span>
         <span style="padding-right: 8px">
-          {dayjs(item[1]).format("DD-MM-YYYY | HH:MM")}
+          {dayjs(item.time).format("DD-MM-YYYY | HH:MM")}
         </span>
       </li>
     {/each}

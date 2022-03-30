@@ -1,40 +1,39 @@
 <script>
-  // @ts-check
-  import dayjs from "dayjs";
-  import customParseFormat from "dayjs/plugin/customParseFormat";
+  // import dayjs from "dayjs";
+  // import customParseFormat from "dayjs/plugin/customParseFormat";
+  import faunadb, { query as q } from "faunadb"
+
 
   import Map from "./Map.svelte";
   import List from "./List.svelte";
   import Header from "./Header.svelte";
   import MapMarker from "./MapMarker.svelte";
 
-  dayjs.extend(customParseFormat);
+  // dayjs.extend(customParseFormat);
+
+
+ 
 
   const fetchItems = (async () => {
-    const response = await fetch(
-      "https://sheets.googleapis.com/v4/spreadsheets/1aAgF1OvlDSBYhkw5keCutXeMM6T2Vzpw0P1uYdIIeJE/values/Sheet1!A1:E1000?key=AIzaSyC-UMHJ9ffwcgsA5u3Qm8xd5pcXPMYU4Wo"
-    );
-    const data = await response.json();
-    let uniqItems = [];
-    let uniqIds = new Set();
-    let items = data.values.slice(1);
-    items.forEach((item) => uniqIds.add(item[2]));
+  
+  const adminClient = new faunadb.Client({ secret: "fnAEi6W0IhAAxfA1ITBNWi4FrDTt-lQhUm2fTEb4", domain: "db.eu.fauna.com"});
 
-    const getDate = (str) => dayjs(str);
-
-    uniqIds.forEach((u) => {
-      const sameId = items.filter((item) => item[2] == u);
-      let last = sameId[0];
-      for (let i = 0; i < sameId.length; i++) {
-        const current = sameId[i];
-        if (getDate(current[1]) > getDate(last[1])) {
-          last = current;
-        }
-      }
-      uniqItems.push(last);
-    });
-
-    return uniqItems;
+  return adminClient.query(
+    q.Get(q.Ref(q.Collection('scanners'), '327479628938608836'))
+  )
+  .then((res) => {
+    const pointsArr = []
+    Object.keys(res.data.points).map(p=>pointsArr.push({...res.data.points[p], id: p}))
+    console.log("$$$", pointsArr)
+    return pointsArr 
+  })
+  .catch((err) => console.error(
+    'Error: [%s] %s: %s',
+    err.name,
+    err.message,
+    err.errors()[0].description,
+  ));
+  
   })();
 </script>
 
@@ -47,7 +46,7 @@
       <List items={data} />
       <Map lat={40.4165} lon={-3.70256} zoom={5}>
         {#each data as item}
-          <MapMarker lat={item[3]} lon={item[4]} label={item[2]} />
+          <MapMarker lat={item.latitude} lon={item.longitude} label={item.machine} id={item.id} />
         {/each}
       </Map>
     {:catch error}
