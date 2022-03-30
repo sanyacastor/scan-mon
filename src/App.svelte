@@ -7,7 +7,10 @@
   import MapMarker from "./MapMarker.svelte";
 
   const fetchItems = (async () => {
-    const adminClient = new faunadb.Client({ secret: process.env.FAUNADB_SECRET, domain: "db.eu.fauna.com"});
+    const adminClient = new faunadb.Client({ 
+      secret: __myapp.env.FAUNADB_SECRET, 
+      domain: "db.eu.fauna.com"
+    });
 
     return adminClient.query(
       q.Get(q.Ref(q.Collection('scanners'), '327479628938608836'))
