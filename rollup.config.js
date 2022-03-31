@@ -70,7 +70,8 @@ export default {
       __myapp: JSON.stringify({
         env: {
           isProd: production,
-          faunaDb: process.env.FAUNADB_SECRET,
+          FAUNADB_SECRET: process.env.FAUNADB_SECRET,
+          MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN,
           ...config().parsed, // attached the .env config
         },
       }),
