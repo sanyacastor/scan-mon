@@ -1,5 +1,5 @@
 <script>
-  import faunadb, { query as q } from "faunadb"
+  import faunadb, { query as q } from "faunadb";
 
   import Map from "./Map.svelte";
   import List from "./List.svelte";
@@ -7,26 +7,34 @@
   import MapMarker from "./MapMarker.svelte";
 
   const fetchItems = (async () => {
-    const adminClient = new faunadb.Client({ 
-      secret: __myapp.env.FAUNADB_SECRET, 
-      domain: "db.eu.fauna.com"
+    const adminClient = new faunadb.Client({
+      secret: __myapp.env.FAUNADB_SECRET,
+      domain: "db.eu.fauna.com",
     });
 
-    return adminClient.query(
-      q.Get(q.Ref(q.Collection('scanners'), '327479628938608836'))
-    )
-    .then((res) => {
-      const pointsArr = []
-      Object.keys(res.data.points).map(p=>pointsArr.push({...res.data.points[p], id: p}))
-      return pointsArr 
-    })
-    .catch((err) => console.error(
-      'Error: [%s] %s: %s',
-      err.name,
-      err.message,
-      err.errors()[0].description,
-    ));
+    return adminClient
+      .query(q.Get(q.Ref(q.Collection("scanners"), "327479628938608836")))
+      .then((res) => {
+        const points = [];
 
+        Object.keys(res.data.points).map((p) =>
+          points.push({ ...res.data.points[p], id: p })
+        );
+
+        const sortedBydate = points.sort(function (a, b) {
+          return new Date(b.time) - new Date(a.time);
+        });
+
+        return sortedBydate;
+      })
+      .catch((err) =>
+        console.error(
+          "Error: [%s] %s: %s",
+          err.name,
+          err.message,
+          err.errors()[0].description
+        )
+      );
   })();
 </script>
 
@@ -39,7 +47,12 @@
       <List items={data} />
       <Map lat={40.4165} lon={-3.70256} zoom={5}>
         {#each data as item}
-          <MapMarker lat={item.latitude} lon={item.longitude} label={item.machine} id={item.id} />
+          <MapMarker
+            lat={item.latitude}
+            lon={item.longitude}
+            label={item.machine}
+            id={item.id}
+          />
         {/each}
       </Map>
     {:catch error}

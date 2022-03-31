@@ -25,7 +25,7 @@
       <li data-id={item.id}>
         <span>{i + 1}.{item.machine}</span>
         <span style="padding-right: 8px">
-          {dayjs(item.time).format("DD-MM-YYYY | HH:MM")}
+          {dayjs(item.time).format("DD-MM-YYYY | HH:mm")}
         </span>
       </li>
     {/each}
