@@ -10,6 +10,7 @@
   export let id;
   export let point;
   export let points;
+  export let label;
 
   document.querySelector(`[data-id='${id}'`).addEventListener("click", () => {
     map.flyTo({
@@ -23,7 +24,9 @@
     point.classList.add("marker--highlighted");
   });
 
-  const popup = new mapbox.Popup({ offset: 25 }).setText(id);
+  const popup = new mapbox.Popup({ offset: 25 }).setHTML(
+    `<b>${label}</b><br/>S/N: ${id}`
+  );
   const marker = new mapbox.Marker(point)
     .setLngLat([lon, lat])
     .setPopup(popup)

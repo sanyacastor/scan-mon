@@ -38,6 +38,7 @@
 
         sortedBydate.forEach(() => {
           const el = document.createElement("div");
+
           el.className = "marker-wrapper";
           el.innerHTML = '<div class="marker"></div>';
           elements = [...elements, el];
