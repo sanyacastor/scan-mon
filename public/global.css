@@ -3,7 +3,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  
 }
 
 body {
@@ -11,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'PT Mono', monospace;
+  font-family: "PT Mono", monospace;
 }
 
 a {
@@ -65,4 +64,23 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
+}
+
+.marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(98, 30, 153);
+}
+
+.marker--highlighted {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 37, 102);
+}
+
+.mapboxgl-popup .mapboxgl-popup-content {
+  border-radius: 8px;
+  padding: 10px 20px 15px;
+  font-size: 14px;
 }

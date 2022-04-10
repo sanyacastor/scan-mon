@@ -7,19 +7,24 @@
 
   export let lat;
   export let lon;
-  export let label;
   export let id;
+  export let point;
+  export let points;
 
-  const popup = new mapbox.Popup({ offset: 25 }).setText(label);
-  document
-    .querySelector(`[data-id='${id}'`)
-    .addEventListener("click", () => {
-      map.flyTo({
-        center: [lon, lat],
-        essential: true,
-      });
+  document.querySelector(`[data-id='${id}'`).addEventListener("click", () => {
+    map.flyTo({
+      center: [lon, lat],
+      essential: true
     });
-  const marker = new mapbox.Marker()
+
+    points.forEach((p) => {
+      p.classList.remove("marker--highlighted");
+    });
+    point.classList.add("marker--highlighted");
+  });
+
+  const popup = new mapbox.Popup({ offset: 25 }).setText(id);
+  const marker = new mapbox.Marker(point)
     .setLngLat([lon, lat])
     .setPopup(popup)
     .addTo(map);

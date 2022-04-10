@@ -14,7 +14,9 @@
       placeholder="search"
       on:input={(e) =>
         (filtredItems = items.filter((point) =>
-          point.id.toLowerCase().includes(e.target.value.trim().toLowerCase())
+          point.machine
+            .toLowerCase()
+            .includes(e.target.value.trim().toLowerCase())
         ))}
       bind:value={search}
     />
@@ -72,7 +74,7 @@
   .search-wrapper:before {
     content: "🔎";
     position: absolute;
-    padding-top: 8px;
+    padding-top: 4px;
     padding-left: 8px;
   }
   .search-wrapper {
@@ -87,6 +89,7 @@
     text-transform: uppercase;
     text-align: center;
   }
+
   @media (max-width: 900px) {
     .items {
       height: auto;

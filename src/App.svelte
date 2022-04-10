@@ -6,11 +6,20 @@
   import Header from "./Header.svelte";
   import MapMarker from "./MapMarker.svelte";
 
+  let points = [];
+
   const fetchItems = (async () => {
     const adminClient = new faunadb.Client({
       secret: __myapp.env.FAUNADB_SECRET,
-      domain: "db.eu.fauna.com",
+      domain: "db.eu.fauna.com"
     });
+
+    const createPoint = () => {
+      const el = document.createElement("div");
+      el.className = "marker";
+      points.push(el);
+      // return el;
+    };
 
     return adminClient
       .query(q.Get(q.Ref(q.Collection("scanners"), "327479628938608836")))
@@ -25,7 +34,23 @@
           return new Date(b.time) - new Date(a.time);
         });
 
-        return sortedBydate;
+        let loops = [];
+
+        sortedBydate.forEach(() => {
+          const el = document.createElement("div");
+          el.className = "marker";
+
+          loops = [...loops, el];
+        });
+
+        console.log("F", loops);
+
+        // createPoint();
+
+        return {
+          sortedPoints: sortedBydate,
+          elements: loops
+        };
       })
       .catch((err) =>
         console.error(
@@ -44,14 +69,16 @@
       <div class="loader"><span>loading...</span></div>
     {:then data}
       <Header />
-      <List items={data} />
+      <List items={data.sortedPoints} />
       <Map lat={40.4165} lon={-3.70256} zoom={5}>
-        {#each data as item}
+        {#each data.sortedPoints as item, i}
           <MapMarker
             lat={item.latitude}
             lon={item.longitude}
             label={item.machine}
+            point={data.elements[i]}
             id={item.id}
+            points={data.elements}
           />
         {/each}
       </Map>
