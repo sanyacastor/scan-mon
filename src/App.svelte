@@ -34,22 +34,18 @@
           return new Date(b.time) - new Date(a.time);
         });
 
-        let loops = [];
+        let elements = [];
 
         sortedBydate.forEach(() => {
           const el = document.createElement("div");
-          el.className = "marker";
-
-          loops = [...loops, el];
+          el.className = "marker-wrapper";
+          el.innerHTML = '<div class="marker"></div>';
+          elements = [...elements, el];
         });
-
-        console.log("F", loops);
-
-        // createPoint();
 
         return {
           sortedPoints: sortedBydate,
-          elements: loops
+          elements
         };
       })
       .catch((err) =>
