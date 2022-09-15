@@ -1,9 +1,26 @@
 <script>
   import dayjs from "dayjs";
+  import { mapBoxInstance } from "./store";
 
   export let items;
   export let search = "";
   export let filtredItems = items;
+  export let markers;
+
+  let map;
+
+  mapBoxInstance.subscribe((value) => {
+    map = value;
+  });
+
+  export let hilightMarker = (id) => {
+    markers.forEach((p) => {
+      p.classList.remove("marker--highlighted");
+    });
+    document
+      .querySelector(`[data-marker="${id}"]`)
+      .classList.add("marker--highlighted");
+  };
 </script>
 
 <div class="items">
@@ -24,7 +41,16 @@
   <h2>Tracking list</h2>
   <ul>
     {#each filtredItems as item, i}
-      <li data-id={item.id}>
+      <li
+        data-point-id={item.id}
+        on:click={() => {
+          map.flyTo({
+            center: [item.longitude, item.latitude],
+            essential: true,
+          });
+          hilightMarker(item.id);
+        }}
+      >
         <span>{i + 1}.{item.machine}</span>
         <span style="padding-right: 8px">
           {dayjs(item.time).format("DD-MM-YYYY | HH:mm")}
@@ -75,7 +101,8 @@
     content: "🔎";
     position: absolute;
     padding-top: 4px;
-    padding-left: 8px;
+    padding-left: 12px;
+    line-height: 1.6;
   }
   .search-wrapper {
     position: relative;
@@ -92,8 +119,24 @@
 
   @media (max-width: 900px) {
     .items {
-      height: auto;
-      max-height: 60vh;
+      height: 50vh;
+    }
+    h2 {
+      font-size: 14px;
+    }
+    .search {
+      font-size: 24px;
+      margin-bottom: 0;
+      padding-left: 50px;
+
+    }
+    .search-wrapper {
+      padding: 4px;
+    }
+    .search-wrapper:before {
+      font-size: 24px;
+      line-height: 1.6;
+      left: 12px;
     }
   }
 </style>

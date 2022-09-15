@@ -11,15 +11,8 @@
   const fetchItems = (async () => {
     const adminClient = new faunadb.Client({
       secret: __myapp.env.FAUNADB_SECRET,
-      domain: "db.eu.fauna.com"
+      domain: "db.eu.fauna.com",
     });
-
-    const createPoint = () => {
-      const el = document.createElement("div");
-      el.className = "marker";
-      points.push(el);
-      // return el;
-    };
 
     return adminClient
       .query(q.Get(q.Ref(q.Collection("scanners"), "327479628938608836")))
@@ -36,17 +29,17 @@
 
         let elements = [];
 
-        sortedBydate.forEach(() => {
+        sortedBydate.forEach((e) => {
           const el = document.createElement("div");
-
+          el.dataset.marker = e.id;
           el.className = "marker-wrapper";
-          el.innerHTML = '<div class="marker"></div>';
+          el.innerHTML = `<div class="marker"></div>`;
           elements = [...elements, el];
         });
 
         return {
           sortedPoints: sortedBydate,
-          elements
+          elements,
         };
       })
       .catch((err) =>
@@ -66,7 +59,7 @@
       <div class="loader"><span>loading...</span></div>
     {:then data}
       <Header />
-      <List items={data.sortedPoints} />
+      <List items={data.sortedPoints} markers={data.elements} />
       <Map lat={40.4165} lon={-3.70256} zoom={5}>
         {#each data.sortedPoints as item, i}
           <MapMarker
@@ -75,7 +68,6 @@
             label={item.machine}
             point={data.elements[i]}
             id={item.id}
-            points={data.elements}
           />
         {/each}
       </Map>
