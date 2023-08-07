@@ -15,7 +15,7 @@
     });
 
     return adminClient
-      .query(q.Get(q.Ref(q.Collection("scanners"), "327479628938608836")))
+      .query(q.Get(q.Ref(q.Collection("points"), "372394788336435404")))
       .then((res) => {
         const points = [];
 
